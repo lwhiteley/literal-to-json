@@ -25,9 +25,6 @@ export default class App extends React.Component {
         <div className="grid grid-pad">
           <div className="cell text-center grid-pad">
             <h1>Object Literal to JSON</h1>
-            <p>This React project just works including
-                <span className="redBg">module</span> local styles.
-              </p>
             <p>Enjoy!</p>
           </div>
         </div>
@@ -57,7 +54,7 @@ export default class App extends React.Component {
         </div>
 
         <div className="grid">
-          <div className="cell cell-width-50 grid-pad offset-btns">
+          <div className="cell cell-width-50 grid-pad">
             <textarea
               ref="literal"
               className="form-control full-width"
