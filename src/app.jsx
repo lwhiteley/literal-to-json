@@ -79,7 +79,7 @@ export default class App extends React.Component {
                   this.setState({
                     disabled: 'disabled',
                   });
-                  $('#json-container').html('');
+                  $('#json-container').html('<span></span>');
                 }
 
               }} />
