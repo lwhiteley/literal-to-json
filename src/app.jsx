@@ -4,6 +4,7 @@ import Clipboard from 'clipboard';
 import moment from 'moment';
 import FaGithub from 'react-icons/lib/fa/github';
 
+import pkg from '../package.json';
 import 'grid-css/grid.min.css';
 import './lib/overtrue-json-viewer/json-viewer.exec.js';
 import './lib/overtrue-json-viewer/json-viewer.css';
@@ -34,14 +35,14 @@ export default class App extends React.Component {
     }
   }
   render() {
-    const today = moment().format("ddd, MMM Do YYYY, h:mm:ss a");
+    const date = moment(pkg.lastUpdated).format("ddd, MMM Do YYYY, h:mm:ss a");
     return (
       <div className="">
 
         <div className="grid grid-pad">
           <div className="cell text-center grid-pad">
             <h2>Object Literal to JSON</h2>
-            <p>Last Updated <span className="pill">{today.toString()}</span> </p>
+            <p>Last Updated <span className="pill">{date.toString()}</span> </p>
             <p>
               <a className="view-source" href="https://github.com/lwhiteley/literal-to-json">
                   <FaGithub />

@@ -1,6 +1,7 @@
 {
   "name": "literal-to-json",
   "version": "0.0.1",
+  "lastUpdated": "2017-10-02T14:51:12.836Z",
   "description": "Convert an object literal to json",
   "main": "''",
   "scripts": {
@@ -9,8 +10,9 @@
     "lint": "eslint --ext js --ext jsx src || exit 0",
     "dev": "webpack-dashboard -- webpack-dev-server",
     "test": "export NODE_ENV=test && jest",
+    "bump:date": "node scripts/bump.js",
     "deploy:gh-pages": "gh-pages -d public",
-    "deploy": "run-s build deploy:gh-pages"
+    "deploy": "run-s bump:date build deploy:gh-pages"
   },
   "repository": {
     "type": "git",
@@ -27,7 +29,8 @@
     "prop-types": "^15.6.0",
     "react": "15.6.1",
     "react-dom": "15.4.2",
-    "react-icons": "^2.2.5"
+    "react-icons": "^2.2.5",
+    "write": "^1.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
