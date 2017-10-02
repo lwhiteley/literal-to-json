@@ -57,3 +57,9 @@ typings/
 # dotenv environment variables file
 .env
 
+dist
+tmp
+# Ignore build files
+public
+.DS_Store
+
