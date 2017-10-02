@@ -11,10 +11,16 @@ loaders.push({
   exclude: ['node_modules']
 });
 
+loaders.push({
+  test: /\.less$/,
+  loaders: ['style-loader', 'css-loader?importLoaders=1', 'less-loader'],
+  exclude: ['node_modules']
+});
+
 module.exports = {
   entry: [
     './src/index.jsx',
-    './styles/index.scss'
+    './styles/index.less'
   ],
   output: {
     publicPath: './',		
