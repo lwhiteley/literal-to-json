@@ -86,9 +86,6 @@ export default class App extends React.Component {
           </div>
 
           <div className="cell cell-width-50 grid-pad">
-
-
-
             <div id="json-container"></div>
           </div>
 
