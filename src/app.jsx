@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Clipboard from 'clipboard';
 import moment from 'moment';
+import FaGithub from 'react-icons/lib/fa/github';
 
 import 'grid-css/grid.min.css';
 import './lib/overtrue-json-viewer/json-viewer.exec.js';
@@ -20,6 +22,17 @@ export default class App extends React.Component {
   componentDidMount() {
     new Clipboard('.btn-clip');
   }
+  static childContextTypes = {
+    reactIconBase: PropTypes.object
+  };
+
+  getChildContext() {
+    return {
+      reactIconBase: {
+        size: 40,
+      }
+    }
+  }
   render() {
     const today = moment().format("ddd, MMM Do YYYY, h:mm:ss a");
     return (
@@ -27,9 +40,14 @@ export default class App extends React.Component {
 
         <div className="grid grid-pad">
           <div className="cell text-center grid-pad">
-            <h1>Object Literal to JSON</h1>
+            <h2>Object Literal to JSON</h2>
             <p>Last Updated <span className="pill">{today.toString()}</span> </p>
-            <p>Enjoy!</p>
+            <p>
+              <a className="view-source" href="https://github.com/lwhiteley/literal-to-json">
+                  <FaGithub />
+              </a>
+            </p>
+            
           </div>
         </div>
 
@@ -65,7 +83,6 @@ export default class App extends React.Component {
               rows="30"
               onChange={e => {
                 let jsLiteral;
-
                 try {
                   eval(`jsLiteral=${e.target.value}`)
                   const json = JSON.stringify(jsLiteral);
@@ -99,6 +116,7 @@ export default class App extends React.Component {
           <div id="json-clip" className="vs-hidden">{this.state.json}</div>
 
         </form>
+
       </div>
     )
   }
