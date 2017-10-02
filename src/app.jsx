@@ -81,7 +81,6 @@ export default class App extends React.Component {
                   });
                   $('#json-container').html('<span></span>');
                 }
-
               }} />
           </div>
 
