@@ -90,7 +90,7 @@ export default class App extends React.Component {
 
           <textarea
             id="json-clip-formatted"
-            className="full-width vs-hidden"
+            className="full-width vs-hidden "
             value={this.state.jsonFormatted} />
           <div id="json-clip" className="vs-hidden">{this.state.json}</div>
 
