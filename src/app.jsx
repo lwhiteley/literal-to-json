@@ -14,13 +14,14 @@ export default class App extends React.Component {
       literalText: null,
       json: '',
       jsonFormatted: '',
+      disabled: 'disabled',
     }
   }
   componentDidMount() {
     new Clipboard('.btn-clip');
   }
   render() {
-    const today = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+    const today = moment().format("ddd, MMM Do YYYY, h:mm:ss a");
     return (
       <div className="">
 
@@ -41,13 +42,13 @@ export default class App extends React.Component {
 
             <div className="grid">
               <div className="cell">
-                <div className="btn-clip btn" data-clipboard-target="#json-clip">
+                <div className={`btn-clip btn ${this.state.disabled}`} data-clipboard-target="#json-clip">
                   Copy
                 </div>
               </div>
 
               <div className="cell">
-                <div className="btn-clip btn" data-clipboard-target="#json-clip-formatted">
+                <div className={`btn-clip btn ${this.state.disabled}`} data-clipboard-target="#json-clip-formatted">
                   Copy Formatted
                 </div>
               </div>
@@ -69,12 +70,16 @@ export default class App extends React.Component {
                   eval(`jsLiteral=${e.target.value}`)
                   const json = JSON.stringify(jsLiteral);
                   this.setState({
+                    disabled: !jsLiteral ? 'disabled' : '',
                     json,
                     jsonFormatted: JSON.stringify(jsLiteral, null, 2),
                   });
                   $('#json-container').jsonview(json);
                 } catch (e) {
-                  console.log(e);
+                  this.setState({
+                    disabled: 'disabled',
+                  });
+                  $('#json-container').html('');
                 }
 
               }} />
