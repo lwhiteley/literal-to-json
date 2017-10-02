@@ -1,5 +1,6 @@
 import React from 'react';
 import Clipboard from 'clipboard'
+
 import 'grid-css/grid.min.css';
 import './lib/overtrue-json-viewer/json-viewer.exec.js'
 import './lib/overtrue-json-viewer/json-viewer.css'
@@ -20,7 +21,6 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="">
-
 
         <div className="grid grid-pad">
           <div className="cell text-center grid-pad">
