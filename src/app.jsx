@@ -1,9 +1,10 @@
 import React from 'react';
-import Clipboard from 'clipboard'
+import Clipboard from 'clipboard';
+import moment from 'moment';
 
 import 'grid-css/grid.min.css';
-import './lib/overtrue-json-viewer/json-viewer.exec.js'
-import './lib/overtrue-json-viewer/json-viewer.css'
+import './lib/overtrue-json-viewer/json-viewer.exec.js';
+import './lib/overtrue-json-viewer/json-viewer.css';
 import '../styles/index.less';
 
 export default class App extends React.Component {
@@ -19,19 +20,21 @@ export default class App extends React.Component {
     new Clipboard('.btn-clip');
   }
   render() {
+    const today = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
     return (
       <div className="">
 
         <div className="grid grid-pad">
           <div className="cell text-center grid-pad">
             <h1>Object Literal to JSON</h1>
+            <p>Last Updated <span className="pill">{today.toString()}</span> </p>
             <p>Enjoy!</p>
           </div>
         </div>
 
         <div className="grid">
           <div className="cell cell-width-50 grid-pad">
-            <p>Paste an Object literal here!</p>
+            <p>Paste an Object literal below!</p>
           </div>
 
           <div className="cell cell-width-50 grid-pad">
