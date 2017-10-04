@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Clipboard from 'clipboard';
 import moment from 'moment';
+import toastr from 'toastr';
 import FaGithub from 'react-icons/lib/fa/github';
 
 import pkg from '../package.json';
 import 'grid-css/grid.min.css';
+import 'toastr/toastr.less';
 import './lib/overtrue-json-viewer/json-viewer.exec.js';
 import './lib/overtrue-json-viewer/json-viewer.css';
 import '../styles/index.less';
@@ -34,11 +36,22 @@ export default class App extends React.Component {
       }
     }
   }
+
+  onCopyClick = (e) => {
+    const $elm = $(e.target);
+    let desc = '';
+    if (!$elm.hasClass('disabled')) {
+      if ($elm.attr('data-formatted')) {
+        desc = 'Formatted '
+      }
+      toastr.success(`${desc}Json Copied`, 'Success', {timeOut: 3000})
+    }
+    
+  }
   render() {
     const date = moment(pkg.lastUpdated).format("ddd, MMM Do YYYY, h:mm:ss a");
     return (
       <div className="">
-
         <div className="grid grid-pad">
           <div className="cell text-center grid-pad">
             <h2>Object Literal to JSON</h2>
@@ -61,13 +74,20 @@ export default class App extends React.Component {
 
             <div className="grid">
               <div className="cell">
-                <div className={`btn-clip btn ${this.state.disabled}`} data-clipboard-target="#json-clip">
+                <div className={`btn-clip btn ${this.state.disabled}`} 
+                  data-clipboard-target="#json-clip"
+                  onClick={this.onCopyClick}
+                >
                   Copy
                 </div>
               </div>
 
               <div className="cell">
-                <div className={`btn-clip btn ${this.state.disabled}`} data-clipboard-target="#json-clip-formatted">
+                <div className={`btn-clip btn ${this.state.disabled}`} 
+                  data-clipboard-target="#json-clip-formatted" 
+                  data-formatted="true"
+                  onClick={this.onCopyClick}
+                >
                   Copy Formatted
                 </div>
               </div>

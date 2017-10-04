@@ -1,7 +1,7 @@
 {
   "name": "literal-to-json",
   "version": "0.0.1",
-  "lastUpdated": "2017-10-04T13:02:31.333Z",
+  "lastUpdated": "2017-10-04T13:23:46.548Z",
   "description": "Convert an object literal to json",
   "main": "''",
   "scripts": {
@@ -24,12 +24,14 @@
   "dependencies": {
     "clipboard": "^1.7.1",
     "grid-css": "^1.3.4",
+    "jquery": "^3.2.1",
     "moment": "^2.18.1",
     "node-sass": "^4.3.0",
     "prop-types": "^15.6.0",
     "react": "15.6.1",
     "react-dom": "15.4.2",
     "react-icons": "^2.2.5",
+    "toastr": "^2.1.2",
     "write": "^1.0.3"
   },
   "devDependencies": {
