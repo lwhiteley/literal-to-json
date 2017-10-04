@@ -93,11 +93,16 @@ export default class App extends React.Component {
                     jsonFormatted: JSON.stringify(jsLiteral, null, 2),
                   });
                   $('#json-container').jsonview(json);
-                } catch (e) {
+                } catch (err) {
+                  let message = '';
+                  if (e.target.value){
+                    message = err.message;
+                  }
+                  console.log(message)
                   this.setState({
                     disabled: 'disabled',
                   });
-                  $('#json-container').html('<span></span>');
+                  $('#json-container').html(`<span>${message}</span>`);
                 }
               }} />
           </div>
